@@ -1,0 +1,42 @@
+import Foundation
+
+let texto1 = "welcome to Tecsup today is a beautiful day"
+let texto2 = "in Tecsup, we are learning swift"
+
+
+let textoCompleto = texto1 + " " + texto2
+
+
+let conectores: Set<String> = ["to", "is", "a", "in", "we", "are"]
+
+
+let traduccion: [String: String] = [
+    "welcome": "bienvenido",
+    "Tecsup": "Tecsup",
+    "today": "hoy",
+    "beautiful": "hermoso",
+    "learning": "aprendiendo",
+    "swift": "swift",
+    "day" : "dia"
+]
+
+
+let palabras = textoCompleto
+    .replacingOccurrences(of: ",", with: "")
+    .split(separator: " ")
+
+
+let resultado = palabras.compactMap { palabra -> String? in
+    let p = String(palabra)
+    
+    
+    if conectores.contains(p) {
+        return nil
+    }
+    
+  
+    return traduccion[p] ?? p
+}
+
+
+print(resultado.joined(separator: " "))
