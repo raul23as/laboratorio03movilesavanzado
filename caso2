@@ -1,0 +1,22 @@
+import Foundation
+
+
+var incasSet: Set<String> = ["Manco Cápac", "Sinchi Roca", "Lloque Yupanqui", "Mayta Cápac", "Cápac Yupanqui", "Inca Roca", "Yahuar Huácac", "Huiracocha", "Pachacútec Inca Yupanqui", "Amaru Inca Yupanqui", "Túpac Inca Yupanqui", "Huayna Cápac", "Huáscar", "Atahualpa"]
+
+
+let buscar = "Atahualpa"
+if incasSet.contains(buscar) {
+    print(" \(buscar) sí está en la lista.")
+}
+
+
+let listaExtra: Set<String> = ["Atahualpa", "Manco Inca"]
+let listaUnificada = incasSet.union(listaExtra)
+print("Total de incas únicos: \(listaUnificada.count)")
+
+
+let yupanquis = listaUnificada.filter { nombre in
+    return nombre.localizedCaseInsensitiveContains("Yupanqui")
+}
+
+print("Incas encontrados: \(yupanquis)")
