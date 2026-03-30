@@ -1,0 +1,46 @@
+import Foundation
+print("===== CASO 1: ARREGLOS =====")
+// 1. Crear arreglos
+var paises = ["Perú", "Brasil", "Argentina", "Chile", "Colombia", "Bolivia"]
+var gdp2025: [Double] = [250.0, 2100.0, 600.0, 350.0, 400.0, 45.0]
+// 2. Acceder al GDP de Bolivia
+if let indexBolivia = paises.firstIndex(of: "Bolivia") {
+    print("GDP de Bolivia 2025: \(gdp2025[indexBolivia]) billones USD")
+}
+// 3. Actualizar GDP de Perú (2026)
+if let indexPeru = paises.firstIndex(of: "Perú") {
+    gdp2025[indexPeru] = 270.0
+    print("GDP de Perú (2026): \(gdp2025[indexPeru])")
+}
+// 4. Volver a GDP 2025
+if let indexPeru = paises.firstIndex(of: "Perú") {
+    gdp2025[indexPeru] = 250.0
+    print("GDP de Perú (2025): \(gdp2025[indexPeru])")
+}
+// 5. Promedio
+let suma = gdp2025.reduce(0, +)
+let promedio = suma / Double(gdp2025.count)
+print("Promedio GDP: \(promedio)")
+// 6. Promedio con reduce
+let promedioReduce = gdp2025.reduce(0, +) / Double(gdp2025.count)
+print("Promedio usando reduce: \(promedioReduce)")
+// 7. GDP más alto
+if let maxGDP = gdp2025.max() {
+    print("GDP más alto: \(maxGDP)")
+}
+// 8. Filtrar GDP > 300
+var paisesMayores300: [String] = []
+for (index, valor) in gdp2025.enumerated() {
+    if valor > 300 {
+        paisesMayores300.append(paises[index])
+    }
+}
+print("Países con GDP > 300: \(paisesMayores300)")
+// 9. Ordenar por GDP
+let combinado = zip(paises, gdp2025)
+let ordenado = combinado.sorted { $0.1 > $1.1 }
+print("Países ordenados por GDP:")
+for (pais, gdp) in ordenado {
+    print("\(pais): \(gdp)")
+}
+
